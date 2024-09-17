@@ -1,5 +1,7 @@
 module PRAS_HydroDispatchModifier
 
-# Write your package code here.
+export modify_hd_gens
+
+include("modify_hd_gens.jl")
 
 end
