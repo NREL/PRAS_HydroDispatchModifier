@@ -1,29 +1,34 @@
 function loadhydro!(
     regions::Regions, gens::PRAS.Generators, region_gen_idxs::Vector{UnitRange{Int64}},
-    timesteps::StepRange{ZonedDateTime,Hour}, hydro_data::DataFrame, hydro_flex::Symbol, meta::Tuple)
-
-    flex_mode == :low &&
-        return loadhydro_lowflex!(regions, datapath, gens,
-                                  timesteps, meta)
+    timesteps::StepRange{ZonedDateTime,Hour}, hydrodata::DataFrame, hydroflex::Symbol, meta::Tuple)
 
     n_regions = length(regions)
+
+    hydronames = Set(hydrodata[!, "Generator Name"])
+    hydplant_idx = findall(gens.names .∈ Ref(hydronames))
+    hydplant_regidx = [findall(id .∈ pras_sys.region_gen_idxs)[1] for id in hydplant_idx]
+    basegens = DataFrame([gens.names[hydplant_idx]],["Name"])
+    basegens[!,:RegionIdx] .= hydplant_regidx
+
+    hydrotype = [hydrodata[findfirst(name .== (hydrodata[!,"Generator Name"])),
+                            "resolution"]
+                for name in basegens.Name]
+    basegens[!, :HydroType] .= hydrotype
 
     hydrogens = vcat(weekbase, monthbase)
     sort!(hydrogens, :RegionIdx)
     n_gens = nrow(hydrogens)
-
-    println("  Weekly: ",
-        nrow(weekbase), " units\t",
-        sum(maximum(Array(weekmaxgen[:, 2:end]), dims=1)), " MW\t",
-        sum(Array(weekenergy[:, 2:end])), " MWh")
-
-    println("  Monthly: ",
-        nrow(monthbase), " units,\t",
-        sum(maximum(Array(monthmaxgen[:, 2:end]), dims=1)), " MW\t",
-        sum(Array(monthenergy[:, 2:end])), " MWh")
-
     hydronames = Set(hydrogens.Name)
-    
+
+    weekenergy, weekmingen, weekmaxgen =
+        loadhydrotime(hydrodata, "Weekly")
+    monthenergy, monthmingen, monthmaxgen =
+        loadhydrotime(hydrodata, "Monthly")    
+
+    hydroflex == :low &&
+        return loadhydro_lowflex!(regions, datapath, gens,
+                                  timesteps, meta)
+
     # Remove hydro generators from the current generators Array
     newgens,new_reggenidx = remove_hydro_generators!(gens,region_gen_idxs,hydronames,meta)
 
@@ -57,7 +62,7 @@ function loadhydro!(
                 w_energy = round(Int, weekenergy[w, row.Name])
                 w_capacity = round(Int, w_maxgen)
 
-                if flex_mode == :mid
+                if hydroflex == :mid
 
                     w_capacity -= round(Int, w_mingen)
 
@@ -94,7 +99,7 @@ function loadhydro!(
                 m_energy = round(Int, monthenergy[m, row.Name])
                 m_capacity = round(Int, m_maxgen)
 
-                if flex_mode == :mid
+                if hydroflex == :mid
 
                     # When mingen values are infeasible, we relax mingen to the
                     # lowest value consistent with the energy budget
@@ -124,7 +129,7 @@ function loadhydro!(
         end
     end
 
-    flex_mode == :mid && netloadadjustment!(regions, hydrogens, fixedhydro_generation)
+    hydroflex == :mid && netloadadjustment!(regions, hydrogens, fixedhydro_generation)
 
     select!(fixedhydro_generation, hydronames...)
 
@@ -140,35 +145,10 @@ function loadhydro!(
 end
 
 function loadhydro_lowflex!(
-    regions::Regions, datapath::String, gens::PRAS.Generators, 
+    regions::Regions, gens::PRAS.Generators, 
     timesteps::StepRange{ZonedDateTime,Hour}, meta)
 
     n_regions = length(regions)
-
-    weekhydropath = datapath * "/Inputs/HydroWeeklyVarSchedule.csv"
-    weekbase, weekenergy, weekmingen, weekmaxgen =
-        loadhydrotime(gens, region_gen_idxs, weekhydropath, "Weekly")
-    weekhydronames = Set(weekbase.Name)
-
-    monthhydropath = datapath * "/Inputs/HydroMonthlyVarSchedule.csv"
-    monthbase, monthenergy, monthmingen, monthmaxgen =
-        loadhydrotime(gens, region_gen_idxs, monthhydropath, "Monthly",
-                      exclusions=weekhydronames)
-
-    hydrogens = vcat(weekbase, monthbase)
-    sort!(hydrogens, :RegionIdx)
-
-    println("  Weekly: ",
-        nrow(weekbase), " units\t",
-        sum(maximum(Array(weekmaxgen[:, 2:end]), dims=1)), " MW\t",
-        sum(Array(weekenergy[:, 2:end])), " MWh")
-
-    println("  Monthly: ",
-        nrow(monthbase), " units,\t",
-        sum(maximum(Array(monthmaxgen[:, 2:end]), dims=1)), " MW\t",
-        sum(Array(monthenergy[:, 2:end])), " MWh")
-
-    hydronames = Set(hydrogens.Name)
 
     # Remove hydro generators from the current generators Array
     newgens,new_reggenidx = remove_hydro_generators!(gens,region_gen_idxs,hydronames,meta)
@@ -230,28 +210,15 @@ function loadhydro_lowflex!(
 
 end
 
-function loadhydrotime(gens::PRAS.Generators, region_gen_idxs::Vector, 
-                        datapath::String, hydrotype::String;
-                        exclusions::Set{String}=Set{String}())
+function loadhydrotime(hydrodata::DataFrame,hydrotype::String)
 
-    hydros = DataFrame(CSV.File(datapath, header=2))
-    select!(hydros, Not([:DatatypeID, :Year]))
-    subset!(hydros, "Generator Name" => ByRow(n -> n ∉ exclusions))
-
-    hydro_names = Set(hydros[!, "Generator Name"])
-    hydplant_idx = findall(gens.names .∈ Ref(hydro_names))
-    hydplant_regidx = [findall(id .∈ region_gen_idxs)[1] for id in hydplant_idx]
-    basegens = DataFrame([gens.names[hydplant_idx]],["Name"])
-    basegens[!, :HydroType] .= hydrotype
-    basegens[!,:RegionIdx] .= hydplant_regidx
-
-    data = timestack(hydros)
+    subset!(hydrodata, "Resolution" => ByRow(n -> n == hydrotype))
 
     energy = timecolumns(data, hydrotype * "Energy")
     mingen = timecolumns(data, "MinGen")
     maxgen = timecolumns(data, ["MaxGen", "MaxCap"])
 
-    return basegens, energy, mingen, maxgen
+    return energy, mingen, maxgen
 
 end
 
@@ -312,6 +279,7 @@ function netloadadjustment!(
 end
 
 # Note: Using GridView week definition, not ISO-8601
+# TODO provide flags to use different week definitions
 week(dt::ZonedDateTime) = div(dayofyear(dt) - 1, 7) + 1
 
 timestack(df::DataFrame) =
