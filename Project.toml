@@ -3,8 +3,16 @@ uuid = "28abefa9-3fcc-42cd-9c7d-b7bc8569a628"
 authors = ["Srihari Sundar", "Gord Stephen"]
 version = "1.0.0-DEV"
 
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+PRAS = "05348d26-1c52-11e9-35e3-9d51842d34b9"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+TimeZones = "f269a46b-ccf7-5d73-abea-4c690281aa53"
+
 [compat]
-julia = "1.6.7"
+julia = "1.10"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

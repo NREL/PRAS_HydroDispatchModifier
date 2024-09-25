@@ -1,21 +1,24 @@
 function loadhydro!(
     regions::Regions, gens::PRAS.Generators, region_gen_idxs::Vector{UnitRange{Int64}},
-    timesteps::StepRange{ZonedDateTime,Hour}, hydrodata::DataFrame, hydroflex::Symbol, meta::Tuple)
+    timesteps::StepRange{ZonedDateTime,Hour}, hydrodata::DataFrame, hydroflex::Symbol, meta::NamedTuple)
+
+    hydroflex == :low &&
+    return loadhydro_lowflex!(regions, gens, region_gen_idxs,
+                              timesteps, hydrodata, meta)
 
     n_regions = length(regions)
 
     hydronames = Set(hydrodata[!, "Generator Name"])
     hydplant_idx = findall(gens.names .∈ Ref(hydronames))
-    hydplant_regidx = [findall(id .∈ pras_sys.region_gen_idxs)[1] for id in hydplant_idx]
-    basegens = DataFrame([gens.names[hydplant_idx]],["Name"])
-    basegens[!,:RegionIdx] .= hydplant_regidx
+    hydplant_regidx = [findall(id .∈ region_gen_idxs)[1] for id in hydplant_idx]
+    hydrogens = DataFrame([gens.names[hydplant_idx]],["Name"])
+    hydrogens[!,:RegionIdx] .= hydplant_regidx
 
     hydrotype = [hydrodata[findfirst(name .== (hydrodata[!,"Generator Name"])),
-                            "resolution"]
-                for name in basegens.Name]
-    basegens[!, :HydroType] .= hydrotype
+                            "Resolution"]
+                for name in hydrogens.Name]
+    hydrogens[!, :HydroType] .= hydrotype
 
-    hydrogens = vcat(weekbase, monthbase)
     sort!(hydrogens, :RegionIdx)
     n_gens = nrow(hydrogens)
     hydronames = Set(hydrogens.Name)
@@ -24,10 +27,6 @@ function loadhydro!(
         loadhydrotime(hydrodata, "Weekly")
     monthenergy, monthmingen, monthmaxgen =
         loadhydrotime(hydrodata, "Monthly")    
-
-    hydroflex == :low &&
-        return loadhydro_lowflex!(regions, datapath, gens,
-                                  timesteps, meta)
 
     # Remove hydro generators from the current generators Array
     newgens,new_reggenidx = remove_hydro_generators!(gens,region_gen_idxs,hydronames,meta)
@@ -145,10 +144,31 @@ function loadhydro!(
 end
 
 function loadhydro_lowflex!(
-    regions::Regions, gens::PRAS.Generators, 
-    timesteps::StepRange{ZonedDateTime,Hour}, meta)
+    regions::Regions, gens::PRAS.Generators, region_gen_idxs::Vector{UnitRange{Int64}},
+    timesteps::StepRange{ZonedDateTime,Hour}, hydrodata::DataFrame,
+    meta)
 
     n_regions = length(regions)
+
+    hydronames = Set(hydrodata[!, "Generator Name"])
+    hydplant_idx = findall(gens.names .∈ Ref(hydronames))
+    hydplant_regidx = [findall(id .∈ region_gen_idxs)[1] for id in hydplant_idx]
+    hydrogens = DataFrame([gens.names[hydplant_idx]],["Name"])
+    hydrogens[!,:RegionIdx] .= hydplant_regidx
+
+    hydrotype = [hydrodata[findfirst(name .== (hydrodata[!,"Generator Name"])),
+                            "Resolution"]
+                for name in hydrogens.Name]
+    hydrogens[!, :HydroType] .= hydrotype
+
+    sort!(hydrogens, :RegionIdx)
+    n_gens = nrow(hydrogens)
+    hydronames = Set(hydrogens.Name)
+
+    weekenergy, weekmingen, weekmaxgen =
+        loadhydrotime(hydrodata, "Weekly")
+    monthenergy, monthmingen, monthmaxgen =
+        loadhydrotime(hydrodata, "Monthly")    
 
     # Remove hydro generators from the current generators Array
     newgens,new_reggenidx = remove_hydro_generators!(gens,region_gen_idxs,hydronames,meta)
@@ -212,11 +232,11 @@ end
 
 function loadhydrotime(hydrodata::DataFrame,hydrotype::String)
 
-    subset!(hydrodata, "Resolution" => ByRow(n -> n == hydrotype))
+    hydro_typesubset = subset(hydrodata, "Resolution" => ByRow(n -> n == hydrotype))
 
-    energy = timecolumns(data, hydrotype * "Energy")
-    mingen = timecolumns(data, "MinGen")
-    maxgen = timecolumns(data, ["MaxGen", "MaxCap"])
+    energy = timecolumns(hydro_typesubset, hydrotype * "Energy")
+    mingen = timecolumns(hydro_typesubset, "MinGen")
+    maxgen = timecolumns(hydro_typesubset, ["MaxGen", "MaxCap"])
 
     return energy, mingen, maxgen
 

@@ -1,7 +1,7 @@
 module PRAS_HydroDispatchModifier
 
-export modify_hd_gens
+export modify_hydro
 
-include("modify_hd_gens.jl")
+include("modify_hydro.jl")
 
 end
