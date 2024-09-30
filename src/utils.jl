@@ -2,6 +2,9 @@ function loadhydro!(
     regions::Regions, gens::PRAS.Generators, region_gen_idxs::Vector{UnitRange{Int64}},
     timesteps::StepRange{ZonedDateTime,Hour}, hydrodata::DataFrame, hydroflex::Symbol, meta::NamedTuple)
 
+    monthlength = [item for item in Dates.DAYSINMONTH]
+    monthlength[2] = length(timesteps) == 8784 ? 29 : 28
+
     hydroflex == :low &&
     return loadhydro_lowflex!(regions, gens, region_gen_idxs,
                               timesteps, hydrodata, meta)
@@ -149,6 +152,8 @@ function loadhydro_lowflex!(
     meta)
 
     n_regions = length(regions)
+    monthlength = [item for item in Dates.DAYSINMONTH]
+    monthlength[2] = length(timesteps) == 8784 ? 29 : 28
 
     hydronames = Set(hydrodata[!, "Generator Name"])
     hydplant_idx = findall(gens.names .∈ Ref(hydronames))
@@ -317,6 +322,3 @@ function timecolumns(df::DataFrame, datatypenames::Vector{String})
     return result
 
 end
-
-monthlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-

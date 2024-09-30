@@ -1,0 +1,196 @@
+value,Time,DataTypeName,Generator Name,Resolution
+7211,Week 1,WeeklyEnergy,122_HYDRO_1,Weekly
+7187,Week 2,WeeklyEnergy,122_HYDRO_1,Weekly
+7203,Week 3,WeeklyEnergy,122_HYDRO_1,Weekly
+7187,Week 4,WeeklyEnergy,122_HYDRO_1,Weekly
+7190,Week 5,WeeklyEnergy,122_HYDRO_1,Weekly
+7212,Week 6,WeeklyEnergy,122_HYDRO_1,Weekly
+7185,Week 7,WeeklyEnergy,122_HYDRO_1,Weekly
+7201,Week 8,WeeklyEnergy,122_HYDRO_1,Weekly
+7214,Week 9,WeeklyEnergy,122_HYDRO_1,Weekly
+7196,Week 10,WeeklyEnergy,122_HYDRO_1,Weekly
+7198,Week 11,WeeklyEnergy,122_HYDRO_1,Weekly
+7208,Week 12,WeeklyEnergy,122_HYDRO_1,Weekly
+7197,Week 13,WeeklyEnergy,122_HYDRO_1,Weekly
+7204,Week 14,WeeklyEnergy,122_HYDRO_1,Weekly
+7186,Week 15,WeeklyEnergy,122_HYDRO_1,Weekly
+7196,Week 16,WeeklyEnergy,122_HYDRO_1,Weekly
+7200,Week 17,WeeklyEnergy,122_HYDRO_1,Weekly
+7197,Week 18,WeeklyEnergy,122_HYDRO_1,Weekly
+7193,Week 19,WeeklyEnergy,122_HYDRO_1,Weekly
+7203,Week 20,WeeklyEnergy,122_HYDRO_1,Weekly
+7198,Week 21,WeeklyEnergy,122_HYDRO_1,Weekly
+7191,Week 22,WeeklyEnergy,122_HYDRO_1,Weekly
+7187,Week 23,WeeklyEnergy,122_HYDRO_1,Weekly
+7196,Week 24,WeeklyEnergy,122_HYDRO_1,Weekly
+7199,Week 25,WeeklyEnergy,122_HYDRO_1,Weekly
+7208,Week 26,WeeklyEnergy,122_HYDRO_1,Weekly
+7210,Week 27,WeeklyEnergy,122_HYDRO_1,Weekly
+7198,Week 28,WeeklyEnergy,122_HYDRO_1,Weekly
+7187,Week 29,WeeklyEnergy,122_HYDRO_1,Weekly
+7196,Week 30,WeeklyEnergy,122_HYDRO_1,Weekly
+7191,Week 31,WeeklyEnergy,122_HYDRO_1,Weekly
+7199,Week 32,WeeklyEnergy,122_HYDRO_1,Weekly
+7195,Week 33,WeeklyEnergy,122_HYDRO_1,Weekly
+7196,Week 34,WeeklyEnergy,122_HYDRO_1,Weekly
+7188,Week 35,WeeklyEnergy,122_HYDRO_1,Weekly
+7192,Week 36,WeeklyEnergy,122_HYDRO_1,Weekly
+7204,Week 37,WeeklyEnergy,122_HYDRO_1,Weekly
+7191,Week 38,WeeklyEnergy,122_HYDRO_1,Weekly
+7194,Week 39,WeeklyEnergy,122_HYDRO_1,Weekly
+7194,Week 40,WeeklyEnergy,122_HYDRO_1,Weekly
+7194,Week 41,WeeklyEnergy,122_HYDRO_1,Weekly
+7197,Week 42,WeeklyEnergy,122_HYDRO_1,Weekly
+7197,Week 43,WeeklyEnergy,122_HYDRO_1,Weekly
+7186,Week 44,WeeklyEnergy,122_HYDRO_1,Weekly
+7189,Week 45,WeeklyEnergy,122_HYDRO_1,Weekly
+7210,Week 46,WeeklyEnergy,122_HYDRO_1,Weekly
+7204,Week 47,WeeklyEnergy,122_HYDRO_1,Weekly
+7205,Week 48,WeeklyEnergy,122_HYDRO_1,Weekly
+7213,Week 49,WeeklyEnergy,122_HYDRO_1,Weekly
+7212,Week 50,WeeklyEnergy,122_HYDRO_1,Weekly
+7193,Week 51,WeeklyEnergy,122_HYDRO_1,Weekly
+7207,Week 52,WeeklyEnergy,122_HYDRO_1,Weekly
+7190,Week 53,WeeklyEnergy,122_HYDRO_1,Weekly
+35,Week 1,MinGen,122_HYDRO_1,Weekly
+35,Week 2,MinGen,122_HYDRO_1,Weekly
+35,Week 3,MinGen,122_HYDRO_1,Weekly
+35,Week 4,MinGen,122_HYDRO_1,Weekly
+35,Week 5,MinGen,122_HYDRO_1,Weekly
+35,Week 6,MinGen,122_HYDRO_1,Weekly
+35,Week 7,MinGen,122_HYDRO_1,Weekly
+35,Week 8,MinGen,122_HYDRO_1,Weekly
+35,Week 9,MinGen,122_HYDRO_1,Weekly
+35,Week 10,MinGen,122_HYDRO_1,Weekly
+35,Week 11,MinGen,122_HYDRO_1,Weekly
+35,Week 12,MinGen,122_HYDRO_1,Weekly
+35,Week 13,MinGen,122_HYDRO_1,Weekly
+35,Week 14,MinGen,122_HYDRO_1,Weekly
+35,Week 15,MinGen,122_HYDRO_1,Weekly
+35,Week 16,MinGen,122_HYDRO_1,Weekly
+35,Week 17,MinGen,122_HYDRO_1,Weekly
+35,Week 18,MinGen,122_HYDRO_1,Weekly
+35,Week 19,MinGen,122_HYDRO_1,Weekly
+35,Week 20,MinGen,122_HYDRO_1,Weekly
+35,Week 21,MinGen,122_HYDRO_1,Weekly
+35,Week 22,MinGen,122_HYDRO_1,Weekly
+35,Week 23,MinGen,122_HYDRO_1,Weekly
+35,Week 24,MinGen,122_HYDRO_1,Weekly
+35,Week 25,MinGen,122_HYDRO_1,Weekly
+35,Week 26,MinGen,122_HYDRO_1,Weekly
+35,Week 27,MinGen,122_HYDRO_1,Weekly
+35,Week 28,MinGen,122_HYDRO_1,Weekly
+35,Week 29,MinGen,122_HYDRO_1,Weekly
+35,Week 30,MinGen,122_HYDRO_1,Weekly
+35,Week 31,MinGen,122_HYDRO_1,Weekly
+35,Week 32,MinGen,122_HYDRO_1,Weekly
+35,Week 33,MinGen,122_HYDRO_1,Weekly
+35,Week 34,MinGen,122_HYDRO_1,Weekly
+35,Week 35,MinGen,122_HYDRO_1,Weekly
+35,Week 36,MinGen,122_HYDRO_1,Weekly
+35,Week 37,MinGen,122_HYDRO_1,Weekly
+35,Week 38,MinGen,122_HYDRO_1,Weekly
+35,Week 39,MinGen,122_HYDRO_1,Weekly
+35,Week 40,MinGen,122_HYDRO_1,Weekly
+35,Week 41,MinGen,122_HYDRO_1,Weekly
+35,Week 42,MinGen,122_HYDRO_1,Weekly
+35,Week 43,MinGen,122_HYDRO_1,Weekly
+35,Week 44,MinGen,122_HYDRO_1,Weekly
+35,Week 45,MinGen,122_HYDRO_1,Weekly
+35,Week 46,MinGen,122_HYDRO_1,Weekly
+35,Week 47,MinGen,122_HYDRO_1,Weekly
+35,Week 48,MinGen,122_HYDRO_1,Weekly
+35,Week 49,MinGen,122_HYDRO_1,Weekly
+35,Week 50,MinGen,122_HYDRO_1,Weekly
+35,Week 51,MinGen,122_HYDRO_1,Weekly
+35,Week 52,MinGen,122_HYDRO_1,Weekly
+35,Week 53,MinGen,122_HYDRO_1,Weekly
+65,Week 1,MaxGen,122_HYDRO_1,Weekly
+65,Week 2,MaxGen,122_HYDRO_1,Weekly
+65,Week 3,MaxGen,122_HYDRO_1,Weekly
+65,Week 4,MaxGen,122_HYDRO_1,Weekly
+65,Week 5,MaxGen,122_HYDRO_1,Weekly
+65,Week 6,MaxGen,122_HYDRO_1,Weekly
+65,Week 7,MaxGen,122_HYDRO_1,Weekly
+65,Week 8,MaxGen,122_HYDRO_1,Weekly
+65,Week 9,MaxGen,122_HYDRO_1,Weekly
+65,Week 10,MaxGen,122_HYDRO_1,Weekly
+65,Week 11,MaxGen,122_HYDRO_1,Weekly
+65,Week 12,MaxGen,122_HYDRO_1,Weekly
+65,Week 13,MaxGen,122_HYDRO_1,Weekly
+65,Week 14,MaxGen,122_HYDRO_1,Weekly
+65,Week 15,MaxGen,122_HYDRO_1,Weekly
+65,Week 16,MaxGen,122_HYDRO_1,Weekly
+65,Week 17,MaxGen,122_HYDRO_1,Weekly
+65,Week 18,MaxGen,122_HYDRO_1,Weekly
+65,Week 19,MaxGen,122_HYDRO_1,Weekly
+65,Week 20,MaxGen,122_HYDRO_1,Weekly
+65,Week 21,MaxGen,122_HYDRO_1,Weekly
+65,Week 22,MaxGen,122_HYDRO_1,Weekly
+65,Week 23,MaxGen,122_HYDRO_1,Weekly
+65,Week 24,MaxGen,122_HYDRO_1,Weekly
+65,Week 25,MaxGen,122_HYDRO_1,Weekly
+65,Week 26,MaxGen,122_HYDRO_1,Weekly
+65,Week 27,MaxGen,122_HYDRO_1,Weekly
+65,Week 28,MaxGen,122_HYDRO_1,Weekly
+65,Week 29,MaxGen,122_HYDRO_1,Weekly
+65,Week 30,MaxGen,122_HYDRO_1,Weekly
+65,Week 31,MaxGen,122_HYDRO_1,Weekly
+65,Week 32,MaxGen,122_HYDRO_1,Weekly
+65,Week 33,MaxGen,122_HYDRO_1,Weekly
+65,Week 34,MaxGen,122_HYDRO_1,Weekly
+65,Week 35,MaxGen,122_HYDRO_1,Weekly
+65,Week 36,MaxGen,122_HYDRO_1,Weekly
+65,Week 37,MaxGen,122_HYDRO_1,Weekly
+65,Week 38,MaxGen,122_HYDRO_1,Weekly
+65,Week 39,MaxGen,122_HYDRO_1,Weekly
+65,Week 40,MaxGen,122_HYDRO_1,Weekly
+65,Week 41,MaxGen,122_HYDRO_1,Weekly
+65,Week 42,MaxGen,122_HYDRO_1,Weekly
+65,Week 43,MaxGen,122_HYDRO_1,Weekly
+65,Week 44,MaxGen,122_HYDRO_1,Weekly
+65,Week 45,MaxGen,122_HYDRO_1,Weekly
+65,Week 46,MaxGen,122_HYDRO_1,Weekly
+65,Week 47,MaxGen,122_HYDRO_1,Weekly
+65,Week 48,MaxGen,122_HYDRO_1,Weekly
+65,Week 49,MaxGen,122_HYDRO_1,Weekly
+65,Week 50,MaxGen,122_HYDRO_1,Weekly
+65,Week 51,MaxGen,122_HYDRO_1,Weekly
+65,Week 52,MaxGen,122_HYDRO_1,Weekly
+65,Week 53,MaxGen,122_HYDRO_1,Weekly
+36042,Jan,MonthlyEnergy,322_HYDRO_3,Monthly
+35955,Feb,MonthlyEnergy,322_HYDRO_3,Monthly
+35999,Mar,MonthlyEnergy,322_HYDRO_3,Monthly
+36035,Apr,MonthlyEnergy,322_HYDRO_3,Monthly
+36013,May,MonthlyEnergy,322_HYDRO_3,Monthly
+36036,Jun,MonthlyEnergy,322_HYDRO_3,Monthly
+36014,Jul,MonthlyEnergy,322_HYDRO_3,Monthly
+36037,Aug,MonthlyEnergy,322_HYDRO_3,Monthly
+35968,Sep,MonthlyEnergy,322_HYDRO_3,Monthly
+36019,Oct,MonthlyEnergy,322_HYDRO_3,Monthly
+36034,Nov,MonthlyEnergy,322_HYDRO_3,Monthly
+36030,Dec,MonthlyEnergy,322_HYDRO_3,Monthly
+40,Jan,MinGen,322_HYDRO_3,Monthly
+40,Feb,MinGen,322_HYDRO_3,Monthly
+40,Mar,MinGen,322_HYDRO_3,Monthly
+40,Apr,MinGen,322_HYDRO_3,Monthly
+40,May,MinGen,322_HYDRO_3,Monthly
+40,Jun,MinGen,322_HYDRO_3,Monthly
+40,Jul,MinGen,322_HYDRO_3,Monthly
+40,Aug,MinGen,322_HYDRO_3,Monthly
+40,Sep,MinGen,322_HYDRO_3,Monthly
+40,Oct,MinGen,322_HYDRO_3,Monthly
+40,Nov,MinGen,322_HYDRO_3,Monthly
+40,Dec,MinGen,322_HYDRO_3,Monthly
+65,Jan,MaxGen,322_HYDRO_3,Monthly
+65,Feb,MaxGen,322_HYDRO_3,Monthly
+65,Mar,MaxGen,322_HYDRO_3,Monthly
+65,Apr,MaxGen,322_HYDRO_3,Monthly
+65,May,MaxGen,322_HYDRO_3,Monthly
+65,Jun,MaxGen,322_HYDRO_3,Monthly
+65,Jul,MaxGen,322_HYDRO_3,Monthly
+65,Aug,MaxGen,322_HYDRO_3,Monthly
+65,Sep,MaxGen,322_HYDRO_3,Monthly
+65,Oct,MaxGen,322_HYDRO_3,Monthly
+65,Nov,MaxGen,322_HYDRO_3,Monthly
+65,Dec,MaxGen,322_HYDRO_3,Monthly
