@@ -2,7 +2,7 @@ using PRAS_HydroDispatchModifier
 using DataFrames,CSV
 using PRAS
 
-all_hydros = DataFrame(CSV.File("rts_hdgens.csv"))
+all_hydros = DataFrame(CSV.File(joinpath(@__DIR__,"rts_hdgens.csv")))
 rts_sys = PRAS.rts_gmlc()
 hd_gens_rts = rts_sys.generators.names[findall(rts_sys.generators.categories .== "Hydro")]
 
