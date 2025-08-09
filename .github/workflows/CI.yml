@@ -23,9 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.6'
-          - '1.9'
-          - 'pre'
+          - '1.10'
         os:
           - ubuntu-latest
         arch:
@@ -37,5 +35,8 @@ jobs:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
       - uses: julia-actions/cache@v2
-      - uses: julia-actions/julia-buildpkg@v1
-      - uses: julia-actions/julia-runtest@v1
+      - name: Install dependencies
+        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Run tests
+        run: julia --project=. --color=yes --check-bounds=yes test/runtests.jl
